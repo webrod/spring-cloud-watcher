@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: configuration-watcher-deployment
+      namespace: spring
+    spec:
+      selector:
+        matchLabels:
+          app: configuration-watcher
+      template:
+        metadata:
+          labels:
+            app: configuration-watcher
+        spec:
+          serviceAccount: configuration-watcher-service
+          containers:
+            - name: configuration-watcher-container
+              image: springcloud/spring-cloud-kubernetes-configuration-watcher:3.0.1-SNAPSHOT
+              imagePullPolicy: IfNotPresent
+              readinessProbe:
+                httpGet:
+                  port: 8888
+                  path: /actuator/health/readiness
+              livenessProbe:
+                httpGet:
+                  port: 8888
+                  path: /actuator/health/liveness
+              ports:
+                - containerPort: 8888
+              env:
+                - name: logging.level.org.springframework.cloud.kubernetes
+                  value: "TRACE"
+                - name: spring.cloud.kubernetes.discovery.all-namespaces
+                  value: "true"
+                - name: spring.cloud.kubernetes.reload.enabled
+                  value: "true"
+                - name: SPRING_CLOUD_KUBERNETES_RELOAD_NAMESPACES_0
+                  value: "namespace1"
+                - name: SPRING_CLOUD_KUBERNETES_RELOAD_NAMESPACES_1
+                  value: "namespace2"
+                - name: spring.cloud.kubernetes.reload.mode
+                  value: "event"
+
+          nodeSelector:
+            kubernetes.io/os: linux

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm1
+  namespace: namespace1
+  labels:
+    spring.cloud.kubernetes.config: "true"
+data:
+  application.properties: |-
+    bean.message=Hello World from NS1!
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm2
+  namespace: namespace2
+  labels:
+    spring.cloud.kubernetes.config: "true"
+data:
+  application.properties: |-
+    bean.message=Hello World from NS2!
+
+
