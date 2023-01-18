@@ -6,7 +6,7 @@ We deploy:
 * one configmap (cm1) in namespace1 ns
 * another configmap (cm2) in namespace2 ns
 
-For now, we do not deploy the backend applications that will consume the configmaps and will be refresed by the watcher, that will be done later.
+For now, we do not deploy the backend applications that will consume the configmaps and will be refreshed by the watcher - that will be done later.
 The immediate goal is to support this github issue where we explain the support for multiple namespaces do not work:
 https://github.com/spring-cloud/spring-cloud-kubernetes/issues/1199
 
