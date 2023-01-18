@@ -3,7 +3,7 @@ apiVersion: v1
 kind: List
 items:
   - apiVersion: v1
-    kind: Servi c eAccount
+    kind: ServiceAccount
     metadata:
       labels:
         app: configuration-watcher
