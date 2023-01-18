@@ -6,7 +6,7 @@ items:
     kind: Deployment
     metadata:
       name: configuration-watcher-deployment
-      namespace: spring
+      namespace: cw
     spec:
       selector:
         matchLabels:

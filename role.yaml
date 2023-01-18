@@ -8,7 +8,7 @@ items:
       labels:
         app: configuration-watcher
       name: configuration-watcher-service
-      namespace: spring
+      namespace: cw
 
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
@@ -22,4 +22,4 @@ items:
     subjects:
       - kind: ServiceAccount
         name: configuration-watcher-service
-        namespace: spring
+        namespace: cw

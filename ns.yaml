@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: spring
+  name: cw
 ---
 apiVersion: v1
 kind: Namespace
